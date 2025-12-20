@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: securityComponent
+
+# Spring Security OAuth2 Resource Server Configuration
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwks-uri: http://localhost:8080/realms/sybase-test-realm-2/protocol/openid-connect/certs
+          issuer-uri: http://localhost:8080/realms/sybase-test-realm-2
+          introspection-uri: http://localhost:8080/realms/sybase-test-realm-2/protocol/openid-connect/token/introspect
+
+# Logging
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2: DEBUG
+
+server:
+  port: 8087
