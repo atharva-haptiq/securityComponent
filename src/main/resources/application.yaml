@@ -8,8 +8,26 @@ spring:
       resourceserver:
         jwt:
           jwks-uri: http://localhost:8080/realms/sybase-test-realm-2/protocol/openid-connect/certs
-          issuer-uri: http://localhost:8080/realms/sybase-test-realm-2
-          introspection-uri: http://localhost:8080/realms/sybase-test-realm-2/protocol/openid-connect/token/introspect
+
+token:
+  validation:
+    strategy: INTROSPECTION
+
+    keycloak:
+      jwks-uri: http://localhost:8080/realms/sybase-test-realm-2/protocol/openid-connect/certs
+      issuer-uri: http://localhost:8080/realms/sybase-test-realm-2
+      introspection-uri: http://localhost:8080/realms/sybase-test-realm-2/protocol/openid-connect/token/introspect
+      client-id: test-react-app-2
+      client-secret: eeSyWf66jq6cqdU21LHngvOD1twh5ObU
+
+
+    local-jwks:
+      file-path: classpath:jwks.json
+
+    remote-jwks:
+      cache-duration-minutes: 10
+
+
 
 # Logging
 logging:
